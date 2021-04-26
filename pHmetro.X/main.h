@@ -38,10 +38,10 @@
 // TODO Insert C++ class definitions if appropriate
 
 // TODO Insert declarations
-//void SPI_Init_Master_A();
-//void SPI_Init_Master_B();
-//void SPI_Write(unsigned char x);
-//unsigned char SPI_Read();
+void SPI_Init_Master_A();
+void SPI_Init_Master_B();
+void SPI_Write(unsigned char x);
+unsigned char SPI_Read();
 
 // Comment a function and leverage automatic documentation with slash star star
 /**
