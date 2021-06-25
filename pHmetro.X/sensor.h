@@ -31,21 +31,14 @@
 #ifndef XC_HEADER_TEMPLATE_H
 #define	XC_HEADER_TEMPLATE_H
 
-#include <xc.h> // include processor files - each processor file is guarded.
+#include <xc.h> // include processor files - each processor file is guarded.  
 
 // TODO Insert appropriate #include <>
-#include "battery.h"
-#include "display.h"
-#include "kbd.h"
-#include "sensor.h"
 
 // TODO Insert C++ class definitions if appropriate
 
 // TODO Insert declarations
-void SPI_Init_Master_A();
-void SPI_Init_Master_B();
-void SPI_Write(unsigned char x);
-unsigned char SPI_Read();
+void SENSOR_SM();
 
 // Comment a function and leverage automatic documentation with slash star star
 /**

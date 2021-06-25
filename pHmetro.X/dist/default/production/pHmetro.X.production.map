@@ -18,7 +18,20 @@ Command:
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files/microchip/xc16/v1.70/bin/bin/../../support/dsPIC33F/gld \
+  build/default/production/mcc_generated_files/clock.o \
+  build/default/production/mcc_generated_files/mcc.o \
+  build/default/production/mcc_generated_files/tmr1.o \
+  build/default/production/mcc_generated_files/pin_manager.o \
+  build/default/production/mcc_generated_files/traps.o \
+  build/default/production/mcc_generated_files/interrupt_manager.o \
+  build/default/production/mcc_generated_files/system.o \
   build/default/production/main.o \
+  build/default/production/sensor.o \
+  build/default/production/battery.o \
+  build/default/production/kbd.o \
+  build/default/production/display.o \
+  GUI.a \
+  GUI.lib \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ1024GB610.gld.00 \
@@ -55,6 +68,27 @@ c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_
                               (__crt_start_mode_normal)
 
 
+Selected CodeGuard Options:
+  FSEC:BWRP:OFF
+  FSEC:BSS:DISABLED
+  FSEC:BSEN:OFF
+  FSEC:GWRP:OFF
+  FSEC:GSS:DISABLED
+  FSEC:CWRP:OFF
+  FSEC:CSS:DISABLED
+  FSEC:AIVTDIS:OFF
+
+CodeGuard FLASH Memory:
+  boot    (none)
+  secure  (none)
+  general 0x100 to 0xabefe
+
+CodeGuard RAM Memory:
+  general 0x800 to 0x87ff
+  secure  (none)
+  boot    (none)
+
+
 xc16-ld 1.70 (B)
 
 Default Code Model: Small
@@ -65,18 +99,26 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0x80            0xc0  (192)
+.text                        0x100               0x1ac           0x282  (642)
+.text                        0x2ac               0x2ec           0x462  (1122)
+.dinit                       0x598                0x32            0x4b  (75)
+.text                        0x5ca                0x3e            0x5d  (93)
 
-                 Total "program" memory used (bytes):          0x24f  (591) <1%
+                 Total "program" memory used (bytes):          0x78c  (1932) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
+.nbss                        0x800                   0             0xa  (10)
+.ndata                       0x80a                   0             0x2  (2)
+.nbss                        0x80c                   0             0x2  (2)
+.bss                         0x80e                   0            0x20  (32)
+.data                        0x82e                   0             0x6  (6)
+.bss                         0x834                   0             0x2  (2)
 
-                 Total "data" memory used (bytes):              0  (0) 
+                 Total "data" memory used (bytes):           0x36  (54) <1%
 
 
 Dynamic Memory Usage
@@ -84,12 +126,32 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x800                              0x7800  (30720)
+stack                        0x836                              0x77ca  (30666)
 
-                 Maximum dynamic memory (bytes):         0x7800  (30720)
+                 Maximum dynamic memory (bytes):         0x77ca  (30666)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
+
+External Symbols in Data Memory (by address):
+
+                    0x0800                  _evento
+                    0x0802                  _tela
+                    0x0804                  _posicao
+                    0x0806                  _sensor_read
+                    0x080c                  _leitura_bateria
+                    0x080d                  _status_alim
+                    0x082e                  _map_tela
+
+External Symbols in Data Memory (by name):
+
+                    0x0800                  _evento
+                    0x080c                  _leitura_bateria
+                    0x082e                  _map_tela
+                    0x0804                  _posicao
+                    0x0806                  _sensor_read
+                    0x080d                  _status_alim
+                    0x0802                  _tela
 
 External Symbols in Program Memory (by address):
 
@@ -97,25 +159,83 @@ External Symbols in Program Memory (by address):
                   0x00013c                  __psv_init
                   0x000152                  __data_init
                   0x000152                  __data_init_da
-                  0x000204                  __DefaultInterrupt
-                  0x00020a                  _SPI_Init_Master_A
-                  0x000228                  _SPI_Init_Master_B
-                  0x000246                  _SPI_Write
-                  0x000264                  _SPI_Read
-                  0x00027e                  _main
+                  0x000204                  __OscillatorFail
+                  0x000224                  __StackError
+                  0x000246                  __AddressError
+                  0x000266                  __MathError
+                  0x000286                  __NVMError
+                  0x0002a6                  __DefaultInterrupt
+                  0x0002ac                  _SPI_Init_Master_A
+                  0x0002ca                  _SPI_Init_Master_B
+                  0x0002e8                  _SPI_Write
+                  0x000306                  _SPI_Read
+                  0x000320                  _DataReadOut
+                  0x000336                  _DataWrite
+                  0x00034c                  _TurnDisplayOn
+                  0x000384                  _TurnAllPixelsOn
+                  0x0003b4                  _main
+                  0x0003ca                  _TMR1_Initialize
+                  0x0003e0                  _TMR1_Tasks_16BitOperation
+                  0x000400                  _TMR1_Period16BitSet
+                  0x000412                  _TMR1_Period16BitGet
+                  0x00041a                  _TMR1_Counter16BitSet
+                  0x00042c                  _TMR1_Counter16BitGet
+                  0x000434                  _TMR1_Start
+                  0x000442                  _TMR1_Stop
+                  0x00044a                  _TMR1_GetElapsedThenClear
+                  0x000462                  _TMR1_SoftwareCounterGet
+                  0x00046e                  _TMR1_SoftwareCounterClear
+                  0x00047a                  _PIN_MANAGER_Initialize
+                  0x0004ec                  _KBD_SM
+                  0x000552                  _CLOCK_Initialize
+                  0x0005e2                  _SYSTEM_Initialize
+                  0x0005f0                  _INTERRUPT_Initialize
+                  0x0005f6                  _SENSOR_SM
+                  0x0005fc                  _BATERIA_SM
+                  0x000602                  _DISPLAY_SM
+                  0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x00020a                  _SPI_Init_Master_A
-                  0x000228                  _SPI_Init_Master_B
-                  0x000264                  _SPI_Read
-                  0x000246                  _SPI_Write
-                  0x000204                  __DefaultInterrupt
+                  0x0005fc                  _BATERIA_SM
+                  0x000552                  _CLOCK_Initialize
+                  0x000602                  _DISPLAY_SM
+                  0x000320                  _DataReadOut
+                  0x000336                  _DataWrite
+                  0x0005f0                  _INTERRUPT_Initialize
+                  0x0004ec                  _KBD_SM
+                  0x00047a                  _PIN_MANAGER_Initialize
+                  0x0005f6                  _SENSOR_SM
+                  0x0002ac                  _SPI_Init_Master_A
+                  0x0002ca                  _SPI_Init_Master_B
+                  0x000306                  _SPI_Read
+                  0x0002e8                  _SPI_Write
+                  0x0005e2                  _SYSTEM_Initialize
+                  0x00042c                  _TMR1_Counter16BitGet
+                  0x00041a                  _TMR1_Counter16BitSet
+                  0x00044a                  _TMR1_GetElapsedThenClear
+                  0x0003ca                  _TMR1_Initialize
+                  0x000412                  _TMR1_Period16BitGet
+                  0x000400                  _TMR1_Period16BitSet
+                  0x00046e                  _TMR1_SoftwareCounterClear
+                  0x000462                  _TMR1_SoftwareCounterGet
+                  0x000434                  _TMR1_Start
+                  0x000442                  _TMR1_Stop
+                  0x0003e0                  _TMR1_Tasks_16BitOperation
+                  0x000384                  _TurnAllPixelsOn
+                  0x00034c                  _TurnDisplayOn
+                  0x000246                  __AddressError
+                  0x0002a6                  __DefaultInterrupt
+                  0x0abf00                  __FSEC.sec
+                  0x000266                  __MathError
+                  0x000286                  __NVMError
+                  0x000204                  __OscillatorFail
+                  0x000224                  __StackError
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x00027e                  _main
+                  0x0003b4                  _main
 
 Memory Configuration
 
@@ -138,7 +258,20 @@ FDEVOPT1         0x0abf2c           0x000002
 
 Linker script and memory map
 
+LOAD build/default/production/mcc_generated_files/clock.o
+LOAD build/default/production/mcc_generated_files/mcc.o
+LOAD build/default/production/mcc_generated_files/tmr1.o
+LOAD build/default/production/mcc_generated_files/pin_manager.o
+LOAD build/default/production/mcc_generated_files/traps.o
+LOAD build/default/production/mcc_generated_files/interrupt_manager.o
+LOAD build/default/production/mcc_generated_files/system.o
 LOAD build/default/production/main.o
+LOAD build/default/production/sensor.o
+LOAD build/default/production/battery.o
+LOAD build/default/production/kbd.o
+LOAD build/default/production/display.o
+LOAD GUI.a
+LOAD GUI.lib
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
@@ -164,7 +297,7 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x10a
+.text             0x000100        0x1ac
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -176,16 +309,22 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr             0x000204          0x4 default_isr
-                  0x000204                  __DefaultInterrupt
+ .isr.text        0x000204         0xa2 build/default/production/mcc_generated_files/traps.o
+                  0x000204                  __OscillatorFail
+                  0x000224                  __StackError
+                  0x000246                  __AddressError
+                  0x000266                  __MathError
+                  0x000286                  __NVMError
+ .isr             0x0002a6          0x4 default_isr
+                  0x0002a6                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000208          0x2 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
-                  0x000208                  __crt_start_mode
-                  0x000208                  __crt_start_mode_normal
+                  0x0002aa          0x2 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
+                  0x0002aa                  __crt_start_mode
+                  0x0002aa                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -193,8 +332,10 @@ usercode
 __FBOOT
  *(__FBOOT.sec*)
 
-__FSEC
+__FSEC            0x0abf00          0x2
  *(__FSEC.sec*)
+ __FSEC.sec       0x0abf00          0x2 /CW/_FSEC
+                  0x0abf00                  __FSEC.sec
 
 __FBSLIM
  *(__FBSLIM.sec*)
@@ -223,26 +364,73 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x9a3
+.debug_info       0x000000       0x3693
  *(.debug_info)
- .debug_info      0x000000        0x9a3 build/default/production/main.o
+ .debug_info      0x000000        0x377 build/default/production/mcc_generated_files/clock.o
+ .debug_info      0x000377        0x7a6 build/default/production/mcc_generated_files/tmr1.o
+ .debug_info      0x000b1d        0x6b0 build/default/production/mcc_generated_files/pin_manager.o
+ .debug_info      0x0011cd        0x432 build/default/production/mcc_generated_files/traps.o
+ .debug_info      0x0015ff        0x16d build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_info      0x00176c        0x339 build/default/production/mcc_generated_files/system.o
+ .debug_info      0x001aa5       0x1525 build/default/production/main.o
+ .debug_info      0x002fca        0x16c build/default/production/sensor.o
+ .debug_info      0x003136        0x194 build/default/production/battery.o
+ .debug_info      0x0032ca        0x285 build/default/production/kbd.o
+ .debug_info      0x00354f        0x144 build/default/production/display.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000         0xfc
+.debug_abbrev     0x000000        0x6dc
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xfc build/default/production/main.o
+ .debug_abbrev    0x000000         0x6a build/default/production/mcc_generated_files/clock.o
+ .debug_abbrev    0x00006a          0x1 build/default/production/mcc_generated_files/mcc.o
+ .debug_abbrev    0x00006b        0x16e build/default/production/mcc_generated_files/tmr1.o
+ .debug_abbrev    0x0001d9         0x59 build/default/production/mcc_generated_files/pin_manager.o
+ .debug_abbrev    0x000232        0x100 build/default/production/mcc_generated_files/traps.o
+ .debug_abbrev    0x000332         0x34 build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_abbrev    0x000366         0xb4 build/default/production/mcc_generated_files/system.o
+ .debug_abbrev    0x00041a        0x145 build/default/production/main.o
+ .debug_abbrev    0x00055f         0x50 build/default/production/sensor.o
+ .debug_abbrev    0x0005af         0x50 build/default/production/battery.o
+ .debug_abbrev    0x0005ff         0xab build/default/production/kbd.o
+ .debug_abbrev    0x0006aa         0x32 build/default/production/display.o
 
-.debug_line       0x000000        0x131
+.debug_line       0x000000        0xa02
  *(.debug_line)
- .debug_line      0x000000        0x131 build/default/production/main.o
+ .debug_line      0x000000        0x12c build/default/production/mcc_generated_files/clock.o
+ .debug_line      0x00012c         0x1a build/default/production/mcc_generated_files/mcc.o
+ .debug_line      0x000146        0x145 build/default/production/mcc_generated_files/tmr1.o
+ .debug_line      0x00028b        0x149 build/default/production/mcc_generated_files/pin_manager.o
+ .debug_line      0x0003d4        0x151 build/default/production/mcc_generated_files/traps.o
+ .debug_line      0x000525         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_line      0x00057a        0x120 build/default/production/mcc_generated_files/system.o
+ .debug_line      0x00069a        0x17c build/default/production/main.o
+ .debug_line      0x000816         0x85 build/default/production/sensor.o
+ .debug_line      0x00089b         0x86 build/default/production/battery.o
+ .debug_line      0x000921         0xa8 build/default/production/kbd.o
+ .debug_line      0x0009c9         0x39 build/default/production/display.o
 
-.debug_frame      0x000000         0x96
+.debug_frame      0x000000        0x51e
  *(.debug_frame)
- .debug_frame     0x000000         0x96 build/default/production/main.o
+ .debug_frame     0x000000         0x2e build/default/production/mcc_generated_files/clock.o
+ .debug_frame     0x00002e        0x132 build/default/production/mcc_generated_files/tmr1.o
+ .debug_frame     0x000160         0x2e build/default/production/mcc_generated_files/pin_manager.o
+ .debug_frame     0x00018e        0x17e build/default/production/mcc_generated_files/traps.o
+ .debug_frame     0x00030c         0x2e build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_frame     0x00033a         0x2e build/default/production/mcc_generated_files/system.o
+ .debug_frame     0x000368         0xfe build/default/production/main.o
+ .debug_frame     0x000466         0x2e build/default/production/sensor.o
+ .debug_frame     0x000494         0x2e build/default/production/battery.o
+ .debug_frame     0x0004c2         0x2e build/default/production/kbd.o
+ .debug_frame     0x0004f0         0x2e build/default/production/display.o
 
-.debug_str        0x000000         0x56
+.debug_str        0x000000         0xf8
  *(.debug_str)
- .debug_str       0x000000         0x56 build/default/production/main.o
+ .debug_str       0x000000         0x12 build/default/production/mcc_generated_files/clock.o
+ .debug_str       0x000012         0x13 build/default/production/mcc_generated_files/tmr1.o
+ .debug_str       0x000025         0x18 build/default/production/mcc_generated_files/traps.o
+ .debug_str       0x00003d          0xc build/default/production/mcc_generated_files/system.o
+ .debug_str       0x000049         0xa6 build/default/production/main.o
+ .debug_str       0x0000ef          0x9 build/default/production/kbd.o
 
 .debug_loc
  *(.debug_loc)
@@ -251,18 +439,58 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x62
+                  0x000000        0x3c4
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x62 build/default/production/main.o
+                  0x000000         0x27 build/default/production/mcc_generated_files/clock.o
+ .debug_pubnames
+                  0x000027        0x11a build/default/production/mcc_generated_files/tmr1.o
+ .debug_pubnames
+                  0x000141         0x2d build/default/production/mcc_generated_files/pin_manager.o
+ .debug_pubnames
+                  0x00016e         0x7d build/default/production/mcc_generated_files/traps.o
+ .debug_pubnames
+                  0x0001eb         0x2b build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_pubnames
+                  0x000216         0x28 build/default/production/mcc_generated_files/system.o
+ .debug_pubnames
+                  0x00023e         0xa6 build/default/production/main.o
+ .debug_pubnames
+                  0x0002e4         0x30 build/default/production/sensor.o
+ .debug_pubnames
+                  0x000314         0x45 build/default/production/battery.o
+ .debug_pubnames
+                  0x000359         0x4a build/default/production/kbd.o
+ .debug_pubnames
+                  0x0003a3         0x21 build/default/production/display.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x18
+.debug_aranges    0x000000        0x108
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/main.o
+                  0x000000         0x18 build/default/production/mcc_generated_files/clock.o
+ .debug_aranges
+                  0x000018         0x18 build/default/production/mcc_generated_files/tmr1.o
+ .debug_aranges
+                  0x000030         0x18 build/default/production/mcc_generated_files/pin_manager.o
+ .debug_aranges
+                  0x000048         0x18 build/default/production/mcc_generated_files/traps.o
+ .debug_aranges
+                  0x000060         0x18 build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_aranges
+                  0x000078         0x18 build/default/production/mcc_generated_files/system.o
+ .debug_aranges
+                  0x000090         0x18 build/default/production/main.o
+ .debug_aranges
+                  0x0000a8         0x18 build/default/production/sensor.o
+ .debug_aranges
+                  0x0000c0         0x18 build/default/production/battery.o
+ .debug_aranges
+                  0x0000d8         0x18 build/default/production/kbd.o
+ .debug_aranges
+                  0x0000f0         0x18 build/default/production/display.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -2364,26 +2592,188 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/pHmetro.X.production.elf elf32-pic30)
+LOAD /CW/_FSEC
 LOAD default_isr
+LOAD data_init
 
 .debug_pubtypes
-                  0x000018         0xe9
+                  0x000108        0x3fc
  .debug_pubtypes
-                  0x000018         0xe9 build/default/production/main.o
+                  0x000108         0x2b build/default/production/mcc_generated_files/clock.o
+ .debug_pubtypes
+                  0x000133         0x87 build/default/production/mcc_generated_files/tmr1.o
+ .debug_pubtypes
+                  0x0001ba         0x1f build/default/production/mcc_generated_files/pin_manager.o
+ .debug_pubtypes
+                  0x0001d9         0x71 build/default/production/mcc_generated_files/traps.o
+ .debug_pubtypes
+                  0x00024a         0x12 build/default/production/mcc_generated_files/interrupt_manager.o
+ .debug_pubtypes
+                  0x00025c         0x42 build/default/production/mcc_generated_files/system.o
+ .debug_pubtypes
+                  0x00029e        0x1e1 build/default/production/main.o
+ .debug_pubtypes
+                  0x00047f         0x1f build/default/production/sensor.o
+ .debug_pubtypes
+                  0x00049e         0x1e build/default/production/battery.o
+ .debug_pubtypes
+                  0x0004bc         0x36 build/default/production/kbd.o
+ .debug_pubtypes
+                  0x0004f2         0x12 build/default/production/display.o
 
 __c30_signature
-                  0x000101         0x12
+                  0x000504         0x54
  __c30_signature
-                  0x000101          0x6 build/default/production/main.o
+                  0x000504          0x6 build/default/production/mcc_generated_files/clock.o
  __c30_signature
-                  0x000107          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+                  0x00050a          0x6 build/default/production/mcc_generated_files/mcc.o
  __c30_signature
-                  0x00010d          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
+                  0x000510          0x6 build/default/production/mcc_generated_files/tmr1.o
+ __c30_signature
+                  0x000516          0x6 build/default/production/mcc_generated_files/pin_manager.o
+ __c30_signature
+                  0x00051c          0x6 build/default/production/mcc_generated_files/traps.o
+ __c30_signature
+                  0x000522          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+ __c30_signature
+                  0x000528          0x6 build/default/production/mcc_generated_files/system.o
+ __c30_signature
+                  0x00052e          0x6 build/default/production/main.o
+ __c30_signature
+                  0x000534          0x6 build/default/production/sensor.o
+ __c30_signature
+                  0x00053a          0x6 build/default/production/battery.o
+ __c30_signature
+                  0x000540          0x6 build/default/production/kbd.o
+ __c30_signature
+                  0x000546          0x6 build/default/production/display.o
+ __c30_signature
+                  0x00054c          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+ __c30_signature
+                  0x000552          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
 
-.text             0x00020a         0x80
- .text            0x00020a         0x80 build/default/production/main.o
-                  0x00020a                  _SPI_Init_Master_A
-                  0x000228                  _SPI_Init_Master_B
-                  0x000246                  _SPI_Write
-                  0x000264                  _SPI_Read
-                  0x00027e                  _main
+.nbss               0x0800          0xa
+ .nbss              0x0800          0x6 build/default/production/kbd.o
+                    0x0800                  _evento
+                    0x0802                  _tela
+                    0x0804                  _posicao
+ .nbss              0x0806          0x4 build/default/production/sensor.o
+                    0x0806                  _sensor_read
+
+.ndata              0x080a          0x2
+ .ndata             0x080a          0x2 build/default/production/mcc_generated_files/traps.o
+
+.nbss               0x080c          0x2
+ .nbss              0x080c          0x2 build/default/production/battery.o
+                    0x080c                  _leitura_bateria
+                    0x080d                  _status_alim
+
+.bss                0x080e         0x20
+ .bss               0x080e         0x20 build/default/production/mcc_generated_files/traps.o
+
+.data               0x082e          0x6
+ .data              0x082e          0x6 build/default/production/kbd.o
+                    0x082e                  _map_tela
+
+.bss                0x0834          0x2
+ .bss               0x0834          0x2 build/default/production/mcc_generated_files/tmr1.o
+
+.ivt._OscillatorFail
+                  0x000004          0x2
+ .ivt._OscillatorFail
+                  0x000004          0x2 build/default/production/mcc_generated_files/traps.o
+
+.ivt._StackError
+                  0x00000a          0x2
+ .ivt._StackError
+                  0x00000a          0x2 build/default/production/mcc_generated_files/traps.o
+
+.ivt._AddressError
+                  0x000006          0x2
+ .ivt._AddressError
+                  0x000006          0x2 build/default/production/mcc_generated_files/traps.o
+
+.ivt._MathError
+                  0x00000c          0x2
+ .ivt._MathError
+                  0x00000c          0x2 build/default/production/mcc_generated_files/traps.o
+
+.ivt._NVMError    0x000008          0x2
+ .ivt._NVMError
+                  0x000008          0x2 build/default/production/mcc_generated_files/traps.o
+
+.config_BTMODE    0x801800          0x2
+ .config_BTMODE
+                  0x801800          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_ALTVREF
+                  0x0abf2c          0x2
+ .config_ALTVREF
+                  0x0abf2c          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_BTSWP     0x0abf28          0x2
+ .config_BTSWP    0x0abf28          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_DNVPEN    0x0abf24          0x2
+ .config_DNVPEN
+                  0x0abf24          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_WDTCLK    0x0abf20          0x2
+ .config_WDTCLK
+                  0x0abf20          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_FCKSM     0x0abf1c          0x2
+ .config_FCKSM    0x0abf1c          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_IESO      0x0abf18          0x2
+ .config_IESO     0x0abf18          0x2 build/default/production/mcc_generated_files/system.o
+
+.config_BSLIM     0x0abf10          0x2
+ .config_BSLIM    0x0abf10          0x2 build/default/production/mcc_generated_files/system.o
+
+.text             0x0002ac        0x2ec
+ .text            0x0002ac        0x11e build/default/production/main.o
+                  0x0002ac                  _SPI_Init_Master_A
+                  0x0002ca                  _SPI_Init_Master_B
+                  0x0002e8                  _SPI_Write
+                  0x000306                  _SPI_Read
+                  0x000320                  _DataReadOut
+                  0x000336                  _DataWrite
+                  0x00034c                  _TurnDisplayOn
+                  0x000384                  _TurnAllPixelsOn
+                  0x0003b4                  _main
+ .text            0x0003ca         0xb0 build/default/production/mcc_generated_files/tmr1.o
+                  0x0003ca                  _TMR1_Initialize
+                  0x0003e0                  _TMR1_Tasks_16BitOperation
+                  0x000400                  _TMR1_Period16BitSet
+                  0x000412                  _TMR1_Period16BitGet
+                  0x00041a                  _TMR1_Counter16BitSet
+                  0x00042c                  _TMR1_Counter16BitGet
+                  0x000434                  _TMR1_Start
+                  0x000442                  _TMR1_Stop
+                  0x00044a                  _TMR1_GetElapsedThenClear
+                  0x000462                  _TMR1_SoftwareCounterGet
+                  0x00046e                  _TMR1_SoftwareCounterClear
+ .text            0x00047a         0x72 build/default/production/mcc_generated_files/pin_manager.o
+                  0x00047a                  _PIN_MANAGER_Initialize
+ .text            0x0004ec         0x66 build/default/production/kbd.o
+                  0x0004ec                  _KBD_SM
+ .text            0x000552         0x46 build/default/production/mcc_generated_files/clock.o
+                  0x000552                  _CLOCK_Initialize
+
+.dinit            0x000598         0x32
+ .dinit           0x000598         0x32 data_init
+
+.text             0x0005ca         0x3e
+ .text            0x0005ca         0x18 build/default/production/mcc_generated_files/traps.o
+                  0x0005ca                  _TRAPS_halt_on_error
+ .text            0x0005e2          0xe build/default/production/mcc_generated_files/system.o
+                  0x0005e2                  _SYSTEM_Initialize
+ .text            0x0005f0          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x0005f0                  _INTERRUPT_Initialize
+ .text            0x0005f6          0x6 build/default/production/sensor.o
+                  0x0005f6                  _SENSOR_SM
+ .text            0x0005fc          0x6 build/default/production/battery.o
+                  0x0005fc                  _BATERIA_SM
+ .text            0x000602          0x6 build/default/production/display.o
+                  0x000602                  _DISPLAY_SM
