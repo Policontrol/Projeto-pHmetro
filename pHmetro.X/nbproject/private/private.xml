@@ -5,13 +5,23 @@
             <url>main.c</url>
             <bookmark id="1">
                 <name/>
-                <line>13</line>
+                <line>15</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/ugui.c</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/display.h</file>
+            <file>file:/C:/Program%20Files/Microchip/xc16/v1.70/rollbackBackupDirectory/C/Program%20Files/Microchip/xc16/v1.70/support/generic/h/libpic30.h</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/nbproject/Makefile-default.mk</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/mcc_generated_files/tmr1.h</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/main.h</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/display.c</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/mcc_generated_files/pin_manager.h</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/mcc_generated_files/system.c</file>
+            <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/ugui.h</file>
             <file>file:/C:/Users/dlour/OneDrive/Documentos/GitHub/Projeto-pHmetro/pHmetro.X/main.c</file>
         </group>
     </open-files>

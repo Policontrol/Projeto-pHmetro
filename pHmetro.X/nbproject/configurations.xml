@@ -20,6 +20,8 @@
       <itemPath>battery.h</itemPath>
       <itemPath>kbd.h</itemPath>
       <itemPath>display.h</itemPath>
+      <itemPath>../../../../../../../Program Files/Microchip/xc16/v1.70/rollbackBackupDirectory/C/Program Files/Microchip/xc16/v1.70/support/generic/h/libpic30.h</itemPath>
+      <itemPath>ugui.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -44,6 +46,7 @@
       <itemPath>battery.c</itemPath>
       <itemPath>kbd.c</itemPath>
       <itemPath>display.c</itemPath>
+      <itemPath>ugui.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -54,6 +57,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
+    <Elem>../../../../../../../Program Files/Microchip/xc16/v1.70/rollbackBackupDirectory/C/Program Files/Microchip/xc16/v1.70/support/generic/h</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

@@ -33,6 +33,7 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.
 #include <stdbool.h>
+#include "ugui.h"
 
 // TODO Insert appropriate #include <>
 
@@ -40,6 +41,24 @@
 
 // TODO Insert declarations
 void DISPLAY_SM();
+void DataReadOut();
+void DataWrite();
+void TurnDisplayOn();
+void SetLcdBias(uint8_t BS);
+void SetLcdSegDirection(uint8_t MX);
+void SetLcdComDirection(uint8_t MY);
+void SetLcdRegulationRatio(double RR);
+void SetLcdEV();
+void SetLcdPowerControl();
+void LcdReadStatus();
+void SetLcdSetStartLine();
+void SetLcdSetPageAddress(unsigned char page);
+void SetLcdSetColumnAddress();
+void DisplayInitialize();
+void TurnAllPixelsOn();
+void PixelSetFunction(UG_S16 x , UG_S16 y ,UG_COLOR c);
+void pixel(int x, int y, int color);
+void UpdateLCD();
 
 // Comment a function and leverage automatic documentation with slash star star
 /**

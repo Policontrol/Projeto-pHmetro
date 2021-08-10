@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/pHmetro.X.production.elf">
+  <executable name="dist/default/debug/pHmetro.X.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>32768</length>
-      <used>1088</used>
-      <free>31680</free>
+      <used>1164</used>
+      <free>31604</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>1056000</length>
-      <used>28230</used>
-      <free>1027770</free>
+      <used>28062</used>
+      <free>1027938</free>
     </memory>
   </executable>
 </project>

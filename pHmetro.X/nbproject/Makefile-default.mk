@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/clock.c mcc_generated_files/mcc.c mcc_generated_files/tmr1.c mcc_generated_files/pin_manager.c mcc_generated_files/traps.c mcc_generated_files/interrupt_manager.c mcc_generated_files/system.c main.c sensor.c battery.c kbd.c display.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/clock.c mcc_generated_files/mcc.c mcc_generated_files/tmr1.c mcc_generated_files/pin_manager.c mcc_generated_files/traps.c mcc_generated_files/interrupt_manager.c mcc_generated_files/system.c main.c sensor.c battery.c kbd.c display.c ugui.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/tmr1.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/battery.o ${OBJECTDIR}/kbd.o ${OBJECTDIR}/display.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/tmr1.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/traps.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/sensor.o.d ${OBJECTDIR}/battery.o.d ${OBJECTDIR}/kbd.o.d ${OBJECTDIR}/display.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/tmr1.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/battery.o ${OBJECTDIR}/kbd.o ${OBJECTDIR}/display.o ${OBJECTDIR}/ugui.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/tmr1.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/traps.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/sensor.o.d ${OBJECTDIR}/battery.o.d ${OBJECTDIR}/kbd.o.d ${OBJECTDIR}/display.o.d ${OBJECTDIR}/ugui.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/tmr1.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/battery.o ${OBJECTDIR}/kbd.o ${OBJECTDIR}/display.o
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/tmr1.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/battery.o ${OBJECTDIR}/kbd.o ${OBJECTDIR}/display.o ${OBJECTDIR}/ugui.o
 
 # Source Files
-SOURCEFILES=mcc_generated_files/clock.c mcc_generated_files/mcc.c mcc_generated_files/tmr1.c mcc_generated_files/pin_manager.c mcc_generated_files/traps.c mcc_generated_files/interrupt_manager.c mcc_generated_files/system.c main.c sensor.c battery.c kbd.c display.c
+SOURCEFILES=mcc_generated_files/clock.c mcc_generated_files/mcc.c mcc_generated_files/tmr1.c mcc_generated_files/pin_manager.c mcc_generated_files/traps.c mcc_generated_files/interrupt_manager.c mcc_generated_files/system.c main.c sensor.c battery.c kbd.c display.c ugui.c
 
 
 
@@ -167,6 +167,12 @@ ${OBJECTDIR}/display.o: display.c  .generated_files/653f9e0c1c4907c6f5df6487e1df
 	@${RM} ${OBJECTDIR}/display.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/ugui.o: ugui.c  .generated_files/b91f32baebd6b0be4eed070652d5bc76c62b07b8.flag .generated_files/8ab545786e3347d84c0f15a0012cf6e8148ea312.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ugui.o.d 
+	@${RM} ${OBJECTDIR}/ugui.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ugui.c  -o ${OBJECTDIR}/ugui.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ugui.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/mcc_generated_files/clock.o: mcc_generated_files/clock.c  .generated_files/a5272b551488ebfb79811a1b50d940284710d10e.flag .generated_files/8ab545786e3347d84c0f15a0012cf6e8148ea312.flag
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
@@ -239,6 +245,12 @@ ${OBJECTDIR}/display.o: display.c  .generated_files/cfac322e19820668b576ba2032a5
 	@${RM} ${OBJECTDIR}/display.o.d 
 	@${RM} ${OBJECTDIR}/display.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/ugui.o: ugui.c  .generated_files/ede8e9a2ff045722d6d3929a8ed42b8a52b5a745.flag .generated_files/8ab545786e3347d84c0f15a0012cf6e8148ea312.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ugui.o.d 
+	@${RM} ${OBJECTDIR}/ugui.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ugui.c  -o ${OBJECTDIR}/ugui.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ugui.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

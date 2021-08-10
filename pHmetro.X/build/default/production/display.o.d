@@ -1,5 +1,7 @@
-build/default/production/display.o: display.c display.h kbd.h
+build/default/production/display.o: display.c display.h ugui.h kbd.h
 
 display.h:
+
+ugui.h:
 
 kbd.h:
